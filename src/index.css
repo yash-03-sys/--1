@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #8b5cf6;
+  --color-brand-purple-glow: rgba(139, 92, 246, 0.5);
+  --color-brand-red: #ef4444;
+  --color-bg-dark: #0a0a0a;
+  --color-bg-card: rgba(20, 20, 20, 0.7);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-gray-100 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-bg-card backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  
+  .purple-glow {
+    box-shadow: 0 0 20px var(--color-brand-purple-glow);
+  }
+
+  .red-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-brand-red shadow-[0_0_8px_rgba(239,68,68,0.8)];
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+

@@ -1,0 +1,5 @@
+{
+  "name": "::-1",
+  "description": "An AI-powered research assistant for documents. Upload PDFs, ask questions, browse related web information, and save research notes.",
+  "requestFramePermissions": []
+}
