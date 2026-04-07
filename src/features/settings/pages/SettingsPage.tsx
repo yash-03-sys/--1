@@ -5,17 +5,16 @@ import {
   Bell, 
   Palette, 
   Database, 
-  ChevronRight, 
   Check, 
-  Moon, 
-  Sun, 
   Monitor,
   Zap
 } from 'lucide-react';
-import Navbar from '@/src/components/Navbar';
-import Footer from '@/src/components/Footer';
+import { Navbar } from '@/src/components/common/Navbar';
+import { Footer } from '@/src/components/common/Footer';
+import { Card } from '@/src/components/ui/Card';
+import { Button } from '@/src/components/ui/Button';
 import { useState } from 'react';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/src/utils/cn';
 
 const themes = [
   { id: 'dark', name: 'Deep Black', color: '#0a0a0a', accent: '#8b5cf6' },
@@ -24,7 +23,7 @@ const themes = [
   { id: 'premium', name: 'Midnight Purple', color: '#1e1b4b', accent: '#c084fc' },
 ];
 
-export default function Settings() {
+export default function SettingsPage() {
   const [activeTheme, setActiveTheme] = useState('dark');
   const [activeTab, setActiveTab] = useState('appearance');
 
@@ -76,11 +75,12 @@ export default function Settings() {
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {themes.map((theme) => (
-                      <button
+                      <Card
                         key={theme.id}
                         onClick={() => setActiveTheme(theme.id)}
+                        padding="sm"
                         className={cn(
-                          "glass-panel p-6 rounded-3xl border-white/5 text-left transition-all relative overflow-hidden group",
+                          "text-left cursor-pointer relative overflow-hidden group",
                           activeTheme === theme.id ? "border-brand-purple/50 ring-1 ring-brand-purple/20" : "hover:border-white/20"
                         )}
                       >
@@ -102,14 +102,14 @@ export default function Settings() {
                             <Zap size={10} /> Pro
                           </div>
                         )}
-                      </button>
+                      </Card>
                     ))}
                   </div>
                 </section>
 
                 <section>
                   <h2 className="text-xl font-bold mb-6">Interface Options</h2>
-                  <div className="glass-panel rounded-3xl overflow-hidden divide-y divide-white/5">
+                  <Card padding="none" className="divide-y divide-white/5">
                     <div className="p-6 flex items-center justify-between">
                       <div>
                         <div className="font-bold mb-1">Smooth Animations</div>
@@ -128,22 +128,13 @@ export default function Settings() {
                         <div className="w-4 h-4 bg-white rounded-full translate-x-6" />
                       </div>
                     </div>
-                    <div className="p-6 flex items-center justify-between opacity-50">
-                      <div>
-                        <div className="font-bold mb-1">High Contrast Mode</div>
-                        <div className="text-sm text-gray-500">Increase readability for visually impaired users.</div>
-                      </div>
-                      <div className="w-12 h-6 bg-white/10 rounded-full relative p-1 cursor-not-allowed">
-                        <div className="w-4 h-4 bg-white/20 rounded-full" />
-                      </div>
-                    </div>
-                  </div>
+                  </Card>
                 </section>
               </motion.div>
             )}
 
             {activeTab !== 'appearance' && (
-              <div className="glass-panel rounded-3xl p-12 text-center">
+              <Card padding="lg" className="text-center">
                 <div className="w-16 h-16 rounded-3xl bg-white/5 flex items-center justify-center mx-auto mb-6 text-gray-500">
                   <Monitor size={32} />
                 </div>
@@ -151,7 +142,7 @@ export default function Settings() {
                 <p className="text-gray-400 max-w-sm mx-auto">
                   We're currently polishing the {activeTab} settings to provide the best research experience.
                 </p>
-              </div>
+              </Card>
             )}
           </div>
         </div>

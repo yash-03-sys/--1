@@ -1,8 +1,10 @@
 import { motion } from 'motion/react';
-import { Upload, FileText, Clock, ChevronRight, Plus, Search, MoreVertical, Trash2, Edit2, Share2 } from 'lucide-react';
+import { Upload, FileText, Clock, Plus, Search, MoreVertical, Trash2, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Navbar from '@/src/components/Navbar';
-import Footer from '@/src/components/Footer';
+import { Navbar } from '@/src/components/common/Navbar';
+import { Footer } from '@/src/components/common/Footer';
+import { Card } from '@/src/components/ui/Card';
+import { Button } from '@/src/components/ui/Button';
 import { useState } from 'react';
 
 const recentDocs = [
@@ -12,7 +14,7 @@ const recentDocs = [
   { id: 4, name: "Sustainable Energy Solutions.pdf", date: "1 week ago", size: "2.1 MB", status: "Processed" }
 ];
 
-export default function Dashboard() {
+export default function DashboardPage() {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
@@ -51,18 +53,18 @@ export default function Dashboard() {
                   className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-brand-purple/50 transition-colors"
                 />
              </div>
-             <button className="bg-brand-purple hover:bg-brand-purple/90 text-white p-3 rounded-2xl purple-glow transition-all">
+             <Button variant="primary" size="sm" className="p-3">
                 <Plus size={24} />
-             </button>
+             </Button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Upload Area */}
           <div className="lg:col-span-2 space-y-8">
-            <motion.div 
+            <Card 
               whileHover={{ scale: 1.01 }}
-              className="glass-panel rounded-[32px] p-12 border-dashed border-2 border-white/10 hover:border-brand-purple/50 transition-all cursor-pointer group relative overflow-hidden"
+              padding="lg"
+              className="border-dashed border-2 border-white/10 hover:border-brand-purple/50 cursor-pointer group relative overflow-hidden"
               onClick={handleUpload}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -72,14 +74,13 @@ export default function Dashboard() {
                   <Upload className="text-brand-purple" size={32} />
                 </div>
                 <h2 className="text-2xl font-bold mb-3">Upload Research Material</h2>
-                <p className="text-gray-400 max-w-sm mx-auto mb-8">
+                <p className="text-gray-400 max-sm mx-auto mb-8">
                   Drag and drop your PDF, DOCX, or TXT files here to start your intelligent research.
                 </p>
                 <div className="flex items-center gap-4 text-xs text-gray-500 font-mono">
                   <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">PDF</span>
                   <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">DOCX</span>
                   <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">TXT</span>
-                  <span className="px-3 py-1 bg-white/5 rounded-full border border-white/10">MAX 50MB</span>
                 </div>
               </div>
 
@@ -107,10 +108,9 @@ export default function Dashboard() {
                   </div>
                 </motion.div>
               )}
-            </motion.div>
+            </Card>
 
-            {/* Recent Documents Table */}
-            <div className="glass-panel rounded-[32px] overflow-hidden">
+            <Card padding="none" className="overflow-hidden">
               <div className="p-8 border-b border-white/5 flex justify-between items-center">
                 <h2 className="text-xl font-bold flex items-center gap-3">
                   <Clock size={20} className="text-brand-purple" />
@@ -157,12 +157,11 @@ export default function Dashboard() {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </Card>
           </div>
 
-          {/* Sidebar / Quick Actions */}
           <div className="space-y-8">
-            <div className="glass-panel rounded-[32px] p-8">
+            <Card padding="md">
               <h3 className="text-lg font-bold mb-6">Quick Actions</h3>
               <div className="grid grid-cols-1 gap-3">
                 <button className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 transition-all text-left group">
@@ -193,8 +192,7 @@ export default function Dashboard() {
                   </div>
                 </button>
               </div>
-            </div>
-
+            </Card>
           </div>
         </div>
       </div>

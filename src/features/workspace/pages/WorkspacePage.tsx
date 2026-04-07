@@ -17,7 +17,9 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { cn } from '@/src/lib/utils';
+import { cn } from '@/src/utils/cn';
+import { Button } from '@/src/components/ui/Button';
+import { Card } from '@/src/components/ui/Card';
 
 type Tab = 'chat' | 'research' | 'sources' | 'map';
 
@@ -37,7 +39,7 @@ const youtubeResults = [
   { id: 2, title: "Superposition Explained", channel: "Veritasium", duration: "15:20", thumbnail: "https://picsum.photos/seed/quantum2/320/180" },
 ];
 
-export default function Workspace() {
+export default function WorkspacePage() {
   const [activeTab, setActiveTab] = useState<Tab>('chat');
   const [noteContent, setNoteContent] = useState("## Superposition Notes\n\n- Superposition allows quantum systems to be in multiple states simultaneously.\n- Analogous to a spinning coin (heads and tails at once).\n- Collapses into a single state upon measurement.\n\n### Key Concepts from PDF\n- Qubits vs Classical Bits\n- Probability amplitudes\n- Measurement interference");
   const [isSaving, setIsSaving] = useState(false);
@@ -80,9 +82,9 @@ export default function Workspace() {
             <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             <span className="text-gray-400">Autosaving...</span>
           </div>
-          <button className="bg-brand-purple hover:bg-brand-purple/90 text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 purple-glow transition-all">
+          <Button variant="primary" size="sm" glow className="flex items-center gap-2">
             <Save size={16} /> Export
-          </button>
+          </Button>
           <button className="p-2 hover:bg-white/5 rounded-xl transition-colors text-gray-400">
             <MoreHorizontal size={20} />
           </button>
@@ -144,12 +146,12 @@ export default function Workspace() {
                     )}>
                       {msg.role === 'assistant' ? "::" : "U"}
                     </div>
-                    <div className={cn(
-                      "max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed",
-                      msg.role === 'assistant' ? "glass-panel border-brand-purple/20" : "bg-white/5 border border-white/10"
+                    <Card padding="sm" className={cn(
+                      "max-w-[80%] text-sm leading-relaxed",
+                      msg.role === 'assistant' ? "border-brand-purple/20" : "bg-white/5 border border-white/10"
                     )}>
                       {msg.text}
-                    </div>
+                    </Card>
                   </motion.div>
                 ))}
               </div>
@@ -169,14 +171,14 @@ export default function Workspace() {
                 <div className="space-y-4">
                   <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest px-1">Web Results</h3>
                   {webResults.map((result) => (
-                    <div key={result.id} className="glass-panel p-5 rounded-2xl border-white/5 hover:border-brand-purple/30 transition-all group cursor-pointer">
+                    <Card key={result.id} padding="sm" className="border-white/5 hover:border-brand-purple/30 cursor-pointer group">
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="font-bold text-brand-purple group-hover:underline">{result.title}</h4>
                         <ExternalLink size={14} className="text-gray-500" />
                       </div>
                       <p className="text-xs text-gray-400 mb-3 line-clamp-2">{result.snippet}</p>
                       <span className="text-[10px] text-gray-600 font-mono">{result.url}</span>
-                    </div>
+                    </Card>
                   ))}
                 </div>
 
@@ -208,7 +210,7 @@ export default function Workspace() {
 
             {activeTab === 'sources' && (
               <div className="space-y-4">
-                <div className="glass-panel p-6 rounded-3xl border-brand-purple/20 bg-gradient-to-br from-brand-purple/5 to-transparent">
+                <Card padding="md" className="border-brand-purple/20 bg-gradient-to-br from-brand-purple/5 to-transparent">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-brand-purple/20 flex items-center justify-center text-brand-purple">
                       <FileText size={20} />
@@ -229,11 +231,11 @@ export default function Workspace() {
                       <div className="h-full w-full bg-green-500" />
                     </div>
                   </div>
-                </div>
+                </Card>
 
                 <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest px-1 mt-8">Cited Sources</h3>
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="glass-panel p-4 rounded-2xl border-white/5 flex items-center justify-between group cursor-pointer hover:border-brand-purple/30 transition-all">
+                  <Card key={i} padding="sm" className="border-white/5 flex items-center justify-between group cursor-pointer hover:border-brand-purple/30">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-brand-purple transition-colors">
                         <Globe size={16} />
@@ -244,7 +246,7 @@ export default function Workspace() {
                       </div>
                     </div>
                     <ArrowRight size={16} className="text-gray-600 group-hover:text-brand-purple group-hover:translate-x-1 transition-all" />
-                  </div>
+                  </Card>
                 ))}
               </div>
             )}

@@ -1,11 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './app/router';
 import { useEffect } from 'react';
-import Landing from '@/src/pages/Landing';
-import Login from '@/src/pages/Login';
-import Dashboard from '@/src/pages/Dashboard';
-import Workspace from '@/src/pages/Workspace';
-import Settings from '@/src/pages/Settings';
-import SourceMap from '@/src/pages/SourceMap';
+import { useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -15,19 +11,13 @@ function ScrollToTop() {
   return null;
 }
 
-export default function App() {
+function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/workspace" element={<Workspace />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/sourcemap" element={<SourceMap />} />
-      </Routes>
-    </Router>
+      <AppRouter />
+    </BrowserRouter>
   );
 }
 
+export default App;
