@@ -17,7 +17,6 @@ export const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           <Link to="/#features" className="text-sm text-gray-400 hover:text-white transition-colors">Features</Link>
           <Link to="/#how-it-works" className="text-sm text-gray-400 hover:text-white transition-colors">How it Works</Link>
-          <Link to="/login" className="text-sm text-gray-400 hover:text-white transition-colors">Login</Link>
           <Link to="/dashboard">
             <Button size="sm" className="flex items-center gap-2">
               Start Research <ChevronRight size={16} />
@@ -41,7 +40,6 @@ export const Navbar = () => {
           <Link to="/#features" className="text-lg text-gray-400 hover:text-white" onClick={() => setIsOpen(false)}>Features</Link>
           <Link to="/#how-it-works" className="text-lg text-gray-400 hover:text-white" onClick={() => setIsOpen(false)}>How it Works</Link>
           <hr className="border-white/10" />
-          <Link to="/login" className="text-lg text-gray-400 hover:text-white" onClick={() => setIsOpen(false)}>Login</Link>
           <Link to="/dashboard" onClick={() => setIsOpen(false)}>
             <Button className="w-full">Start Research</Button>
           </Link>

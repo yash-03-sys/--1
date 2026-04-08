@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { ROUTES } from './routes';
 import LandingPage from '@/src/features/landing/pages/LandingPage';
-import LoginPage from '@/src/features/auth/pages/LoginPage';
 import DashboardPage from '@/src/features/documents/pages/DashboardPage';
 import WorkspacePage from '@/src/features/workspace/pages/WorkspacePage';
 import SettingsPage from '@/src/features/settings/pages/SettingsPage';
@@ -11,7 +10,6 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path={ROUTES.LANDING} element={<LandingPage />} />
-      <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
       <Route path={ROUTES.WORKSPACE} element={<WorkspacePage />} />
       <Route path={ROUTES.SETTINGS} element={<SettingsPage />} />

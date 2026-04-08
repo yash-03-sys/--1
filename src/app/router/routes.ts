@@ -1,8 +1,7 @@
 export const ROUTES = {
   LANDING: '/',
-  LOGIN: '/login',
   DASHBOARD: '/dashboard',
-  WORKSPACE: '/workspace',
+  WORKSPACE: '/workspace/:documentId',
   SETTINGS: '/settings',
   SOURCE_MAP: '/sourcemap',
 };

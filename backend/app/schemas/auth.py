@@ -1,9 +1,8 @@
-from typing import Optional
 from pydantic import BaseModel
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+class GoogleAuthRequest(BaseModel):
+    id_token: str
 
-class TokenPayload(BaseModel):
-    sub: Optional[int] = None
+class TokenResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"

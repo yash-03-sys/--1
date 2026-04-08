@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
-class UserSettingsUpdate(BaseModel):
+class ThemeUpdateRequest(BaseModel):
+    theme: str # 'dark black', 'white', 'grey', 'premium'
+
+class SettingsResponse(BaseModel):
     theme: str
-    notifications_enabled: bool
