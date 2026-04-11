@@ -1,0 +1,1 @@
+# Reindex documents script

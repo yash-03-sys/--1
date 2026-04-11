@@ -1,13 +1,29 @@
-from pydantic import BaseModel
 from typing import List, Optional
+from pydantic import BaseModel
+from datetime import datetime
 
-class ChatRequest(BaseModel):
-    message: str
-    session_id: Optional[int] = None
-    document_id: Optional[int] = None
-    use_web_search: bool = False
+class ChatMessageBase(BaseModel):
+    content: str
+    role: str
 
-class ChatResponse(BaseModel):
-    reply: str
+class ChatMessageCreate(ChatMessageBase):
+    pass
+
+class ChatMessage(ChatMessageBase):
+    id: int
     session_id: int
-    citations: Optional[List[dict]] = None
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+class ChatSessionBase(BaseModel):
+    document_id: int
+
+class ChatSession(ChatSessionBase):
+    id: int
+    user_id: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True

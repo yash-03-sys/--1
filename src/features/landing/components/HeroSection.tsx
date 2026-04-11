@@ -32,9 +32,9 @@ export const HeroSection = () => {
                 Start Researching <ChevronRight size={20} />
               </Button>
             </Link>
-            <Link to="/dashboard">
+            <Link to="/login">
               <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                Open Workspace
+                Sign In
               </Button>
             </Link>
           </div>

@@ -35,16 +35,16 @@ export const ProductPreviewSection = () => {
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: "Upload Panel", icon: <UploadIcon size={16} />, to: "/dashboard" },
-                  { label: "Chat Panel", icon: <MessageSquare size={16} />, to: "/dashboard" },
-                  { label: "Source Cards", icon: <Layers size={16} />, to: "/dashboard" },
-                  { label: "Notes Editor", icon: <EditIcon size={16} />, to: "/dashboard" },
-                  { label: "Source Map", icon: <Share2 size={16} />, to: "/dashboard" }
+                  { label: "Upload Panel", icon: <UploadIcon size={16} /> },
+                  { label: "Chat Panel", icon: <MessageSquare size={16} /> },
+                  { label: "Source Cards", icon: <Layers size={16} /> },
+                  { label: "Notes Editor", icon: <EditIcon size={16} /> },
+                  { label: "Source Map", icon: <Share2 size={16} /> }
                 ].map((item, i) => (
-                  <Link key={i} to={item.to} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 text-sm font-medium hover:border-brand-purple/30 hover:bg-white/10 transition-colors">
+                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 text-sm font-medium">
                     <div className="text-brand-purple">{item.icon}</div>
                     {item.label}
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>

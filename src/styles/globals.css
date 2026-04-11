@@ -1,45 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-brand-purple: #8b5cf6;
-  --color-brand-purple-glow: rgba(139, 92, 246, 0.5);
-  --color-brand-red: #ef4444;
-  --color-bg-dark: #0a0a0a;
-  --color-bg-card: rgba(20, 20, 20, 0.7);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
   
+  --color-surface-main: var(--surface-main);
+  --color-surface-sidebar: var(--surface-sidebar);
+  --color-surface-card: var(--surface-card);
+  --color-surface-input: var(--surface-input);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-border-soft: var(--border-soft);
+  --color-border-strong: var(--border-strong);
+
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 @layer base {
+  :root {
+    /* Default: Cream & Brown */
+    --brand-primary: #8B5E3C;
+    --brand-secondary: #D2B48C;
+    --brand-accent: #C4A484;
+    
+    --surface-main: #F5F2ED;
+    --surface-sidebar: #2D241E;
+    --surface-card: #FFFFFF;
+    --surface-input: #FFFFFF;
+    
+    --text-primary: #1A1A1A;
+    --text-secondary: #4A4A4A;
+    --text-muted: #8E8E8E;
+    
+    --border-soft: rgba(139, 94, 60, 0.1);
+    --border-strong: rgba(139, 94, 60, 0.2);
+    --brand-text: #FFFFFF;
+  }
+
+  [data-theme='black'] {
+    --brand-primary: #FFFFFF;
+    --brand-secondary: #A0A0A0;
+    --brand-accent: #606060;
+    --surface-main: #000000;
+    --surface-sidebar: #111111;
+    --surface-card: #1A1A1A;
+    --surface-input: #1A1A1A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --text-muted: #888888;
+    --border-soft: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.2);
+    --brand-text: #000000;
+  }
+
+  [data-theme='white'] {
+    --brand-primary: #000000;
+    --brand-secondary: #404040;
+    --brand-accent: #808080;
+    --surface-main: #FFFFFF;
+    --surface-sidebar: #F5F5F5;
+    --surface-card: #FFFFFF;
+    --surface-input: #F9F9F9;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --border-soft: rgba(0, 0, 0, 0.05);
+    --border-strong: rgba(0, 0, 0, 0.1);
+    --brand-text: #FFFFFF;
+  }
+
+  [data-theme='grey'] {
+    --brand-primary: #333333;
+    --brand-secondary: #666666;
+    --brand-accent: #999999;
+    --surface-main: #E5E5E5;
+    --surface-sidebar: #333333;
+    --surface-card: #F0F0F0;
+    --surface-input: #F0F0F0;
+    --text-primary: #1A1A1A;
+    --text-secondary: #444444;
+    --text-muted: #777777;
+    --border-soft: rgba(0, 0, 0, 0.1);
+    --border-strong: rgba(0, 0, 0, 0.2);
+    --brand-text: #FFFFFF;
+  }
+
+  [data-theme='yellow-brown'] {
+    --brand-primary: #B35900;
+    --brand-secondary: #E67300;
+    --brand-accent: #FF8C1A;
+    --surface-main: #FFF9E6;
+    --surface-sidebar: #4D2600;
+    --surface-card: #FFFFFF;
+    --surface-input: #FFFFFF;
+    --text-primary: #261300;
+    --text-secondary: #4D2600;
+    --text-muted: #804000;
+    --border-soft: rgba(77, 38, 0, 0.1);
+    --border-strong: rgba(77, 38, 0, 0.2);
+    --brand-text: #FFFFFF;
+  }
+
+  [data-theme='warm-brown'] {
+    --brand-primary: #D2B48C;
+    --brand-secondary: #C4A484;
+    --brand-accent: #8B5E3C;
+    --surface-main: #3D2B1F;
+    --surface-sidebar: #261A13;
+    --surface-card: #4D3729;
+    --surface-input: #4D3729;
+    --text-primary: #F5F2ED;
+    --text-secondary: #E5E0D8;
+    --text-muted: #C4A484;
+    --border-soft: rgba(210, 180, 140, 0.1);
+    --border-strong: rgba(210, 180, 140, 0.2);
+    --brand-text: #261A13;
+  }
+
   body {
-    @apply bg-bg-dark text-gray-100 antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: var(--surface-main);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    @apply transition-colors duration-300;
   }
 }
 
 @layer components {
-  .glass-panel {
-    @apply bg-bg-card backdrop-blur-xl border border-white/10 shadow-2xl;
+  .stitch-border {
+    position: relative;
   }
   
-  .purple-glow {
-    box-shadow: 0 0 20px var(--color-brand-purple-glow);
+  .stitch-border::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed var(--brand-primary);
+    opacity: 0.3;
+    pointer-events: none;
+    border-radius: inherit;
   }
 
-  .red-dot {
-    @apply w-1.5 h-1.5 rounded-full bg-brand-red shadow-[0_0_8px_rgba(239,68,68,0.8)];
+  .premium-card {
+    @apply bg-surface-card rounded-3xl shadow-soft border border-border-soft transition-all duration-300;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-2xl text-text-muted hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer;
+  }
+
+  .sidebar-item-active {
+    @apply text-white bg-white/10;
+  }
+
+  .chat-input-container {
+    @apply relative flex items-center bg-surface-input rounded-5xl shadow-premium border border-border-soft px-6 py-4 transition-all duration-300 focus-within:border-brand-primary focus-within:ring-4 focus-within:ring-brand-primary/5;
+  }
+
+  .pill-button {
+    @apply px-4 py-2 rounded-full border border-border-soft text-sm text-text-secondary hover:bg-brand-primary hover:text-white transition-all duration-200;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Custom Scrollbar for Sidebar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }

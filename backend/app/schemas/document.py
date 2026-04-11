@@ -1,19 +1,18 @@
+from typing import Optional
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional
 
-class DocumentResponse(BaseModel):
-    id: int
+class DocumentBase(BaseModel):
+    title: str
     filename: str
-    status: str
-    file_size: Optional[int] = None
+
+class DocumentCreate(DocumentBase):
+    pass
+
+class Document(DocumentBase):
+    id: int
+    owner_id: int
     created_at: datetime
-    
+
     class Config:
         from_attributes = True
-
-class DocumentStatusResponse(BaseModel):
-    document_id: int
-    status: str
-    progress_percentage: float
-    error_message: Optional[str] = None

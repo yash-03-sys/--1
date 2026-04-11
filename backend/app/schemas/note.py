@@ -1,22 +1,15 @@
-from pydantic import BaseModel
 from typing import Optional
-from datetime import datetime
+from pydantic import BaseModel
 
-class NoteCreate(BaseModel):
-    title: str
+class NoteBase(BaseModel):
     content: str
-    document_id: Optional[int] = None
 
-class NoteUpdate(BaseModel):
-    title: Optional[str] = None
-    content: Optional[str] = None
+class NoteCreate(NoteBase):
+    pass
 
-class NoteResponse(BaseModel):
+class Note(NoteBase):
     id: int
-    title: str
-    content: str
-    document_id: Optional[int]
-    updated_at: datetime
+    user_id: int
 
     class Config:
         from_attributes = True

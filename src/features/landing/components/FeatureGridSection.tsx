@@ -1,56 +1,47 @@
 import { motion } from 'motion/react';
 import { MessageSquare, Globe, Layers, Save, Share2, Palette, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { Card } from '@/src/components/ui/Card';
 
 const smartFeatures = [
   {
     icon: <UploadIcon className="text-brand-purple" />,
     title: "Intelligent Upload",
-    description: "Upload PDFs with real-time processing percentage and structure analysis.",
-    to: "/dashboard",
+    description: "Upload PDFs with real-time processing percentage and structure analysis."
   },
   {
     icon: <MessageSquare className="text-brand-purple" />,
     title: "Document Chat",
-    description: "Ask complex questions directly to your documents and get instant, cited answers.",
-    to: "/dashboard",
+    description: "Ask complex questions directly to your documents and get instant, cited answers."
   },
   {
     icon: <Globe className="text-brand-purple" />,
     title: "Web Research",
-    description: "Browser-style integrated search to find related information across the entire web.",
-    to: "/dashboard",
+    description: "Browser-style integrated search to find related information across the entire web."
   },
   {
     icon: <Layers className="text-brand-purple" />,
     title: "Source Citations",
-    description: "Automatic page references and source citations for every AI-generated insight.",
-    to: "/dashboard",
+    description: "Automatic page references and source citations for every AI-generated insight."
   },
   {
     icon: <Save className="text-brand-purple" />,
     title: "Autosave Notes",
-    description: "Your research notes are saved in real-time as you explore and write.",
-    to: "/dashboard",
+    description: "Your research notes are saved in real-time as you explore and write."
   },
   {
     icon: <Share2 className="text-brand-purple" />,
     title: "Source Mapping",
-    description: "Visualize topic connections and source relationships in an interactive graph.",
-    to: "/dashboard",
+    description: "Visualize topic connections and source relationships in an interactive graph."
   },
   {
     icon: <Palette className="text-brand-purple" />,
     title: "Theme Customization",
-    description: "Choose from premium themes like Deep Black, Slate Grey, or Midnight Purple.",
-    to: "/settings",
+    description: "Choose from premium themes like Deep Black, Slate Grey, or Midnight Purple."
   },
   {
     icon: <Clock className="text-brand-purple" />,
     title: "Research Sessions",
-    description: "Save and resume your research sessions exactly where you left off.",
-    to: "/dashboard",
+    description: "Save and resume your research sessions exactly where you left off."
   }
 ];
 
@@ -73,18 +64,17 @@ export const FeatureGridSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {smartFeatures.map((feature, idx) => (
-            <Link key={idx} to={feature.to} className="block">
-              <Card
-                whileHover={{ y: -5 }}
-                className="group hover:border-brand-purple/30 cursor-pointer h-full"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-brand-purple/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
-              </Card>
-            </Link>
+            <Card
+              key={idx}
+              whileHover={{ y: -5 }}
+              className="group hover:border-brand-purple/30"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-brand-purple/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+            </Card>
           ))}
         </div>
       </div>
